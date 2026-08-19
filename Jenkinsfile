@@ -7,17 +7,16 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
-                sh 'java -version'
             }
         }
         stage('Build') {
             steps {
-                sh 'mvn -B clean package -Dmaven.compiler.release=17'
+                sh 'mvn -B clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn -B test -Dmaven.compiler.release=17'
+                sh 'mvn -B test'
             }
             post {
                 always {
